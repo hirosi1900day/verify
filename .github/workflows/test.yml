@@ -18,7 +18,7 @@ jobs:
           ref: main
       - name: 確認
         if: github.event_name == 'pull_request'
-        run: ${{ github.event.pull_request.head.sha }}
+        run: echo ${{ github.event.pull_request.head.sha }}
       - name: verify
         working-directory: test
         run: cat test.sh
