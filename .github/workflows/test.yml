@@ -17,7 +17,7 @@ jobs:
         with:
           ref: main
       - name: 確認
-        run: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && 'main' || github.event.pull_request.head.sha }}
+        run: echo ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && 'main' || github.event.pull_request.head.sha }}
       - name: verify
         working-directory: test
         run: cat test.sh
