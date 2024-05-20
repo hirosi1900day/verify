@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && 'main' || github.event.pull_request.head.sha }}
       - name: 確認
         run: echo ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && 'main' || github.event.pull_request.head.sha }}
       - name: verify
