@@ -17,8 +17,7 @@ jobs:
         with:
           ref: main
       - name: 確認
-        if: github.event_name == 'pull_request'
-        run: echo ${{ github.event.pull_request.head.sha }}
+        run: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && 'main' || github.event.pull_request.head.sha }}
       - name: verify
         working-directory: test
         run: cat test.sh
